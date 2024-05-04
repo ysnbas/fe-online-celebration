@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  .grid {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .col {
+      box-sizing: border-box;
+      flex: 0 0 auto;
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+      min-width: 0;
+      background-color: #fff;
+      padding: 0 15px 0 15px;
+    }
+    .rightChangeColor {
+      background-color: #EEEDED;
+    }
+  }
+}
+.maxWidth {
+  max-width: 1280px;
+}

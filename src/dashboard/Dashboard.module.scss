@@ -1,0 +1,15 @@
+.topContainer {
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.childContainer {
+  min-height: calc(100vh - 70px);
+}
+
+.dashboardContainer {
+  position: relative;
+}

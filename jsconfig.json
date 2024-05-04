@@ -1,7 +1,18 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"]
+      "@Components/*": ["components/*"],
+      "@Modules/*": ["modules/*"],
+      "@Styles/*": ["styles/*"],
+      "@Constants/*": ["constants/*"],
+      "@Utils/*": ["utils/*"],
+      "@Public/*": ["public/*"],
+      "@Redux/*": ["redux/*"],
+      "@Auth/*": ["auth/*"],
+      "@Dashboard/*": ["dashboard/*"],
+      "@Layouts/*": ["layouts/*"],
+      "@Service/*": ["service/*"]
     }
   }
 }

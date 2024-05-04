@@ -1,0 +1,71 @@
+.userFormContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.createAccountContainer {
+  display: flex;
+  align-items: center;
+  .accountLink {
+    font-size: 14px;
+    color: black;
+    margin-right: 6px;
+  }
+  span {
+    color: #007bff;
+    cursor: pointer;
+  }
+}
+
+.formControl {
+  width: 350px;
+}
+.rightContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.mb_16 {
+  margin-bottom: 16px;
+}
+.strike {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  color: black;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.strike > span {
+  position: relative;
+  display: inline-block;
+}
+
+.strike > span:before,
+.strike > span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9999px;
+  /* Here is the modification */
+  border-top: 1px double #636363;
+}
+
+.strike > span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+.strike > span:after {
+  left: 100%;
+  margin-left: 15px;
+}

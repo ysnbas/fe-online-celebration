@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  input {
+    padding-right: 50px;
+  }
+}
+
+.textField {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 8px;
+  min-height: 18px;
+  background-color: rgb(0 0 0 / 68%);
+  border: none;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 16px 24px;
+  letter-spacing: 1px;
+}
+
+.errorInput {
+  border: 1px solid red;
+}
+
+.titleStyle {
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.descriptionStyle {
+  color: black;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 8px;
+  opacity: 50%;
+}
+
+.errorStyle {
+  color: red;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.rightIconContainer {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  top: 34%;
+  transform: translate(-10px, 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .textField {
+    transition: none;
+  }
+}
+
+.textField:focus {
+  border: 1px solid black;
+  outline: 0;
+}
+
+.textField::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+
+.textField::-webkit-input-placeholder {
+  color: grey;
+  opacity: 1;
+}
+
+.textField::-moz-placeholder {
+  color: grey;
+  opacity: 1;
+}
+
+.textField:-ms-input-placeholder {
+  color: grey;
+  opacity: 1;
+}
+
+.textField::-ms-input-placeholder {
+  color: grey;
+  opacity: 1;
+}
+
+.textField::placeholder {
+  color: grey;
+  opacity: 1;
+}
+
+.textField:disabled,
+.formControl[readonly] {
+  background-color: #6c77ea33 !important;
+  color: rgb(186, 185, 185);
+  opacity: 1;
+  cursor: no-drop;
+}
+.textField:-webkit-autofill{
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(0 0 0 / 68%) inset;
+}
