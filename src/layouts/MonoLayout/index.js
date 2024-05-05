@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import styles from "./MonoLayout.module.scss";
 
-export default function MonoLayout() {
-  return (
-    <div>MonoLayout</div>
-  )
+export default function MonoLayout({ children }) {
+  return <div className={styles.container}>{children}</div>;
 }

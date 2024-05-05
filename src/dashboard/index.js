@@ -12,9 +12,9 @@ export default function Dashboard({ children }) {
         <Header />
       </div>
       <div className={styles.childContainer}>{children}</div>
-      <div className={styles.bottomContainer}>
+      {/* <div className={styles.bottomContainer}>
         <Footer />
-      </div>
+      </div> */}
     </section>
   );
 }

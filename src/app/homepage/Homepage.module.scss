@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+  .createAIForm {
+    button {
+      margin-top: 20px;
+    }
+    .generated {
+      margin-top: 20px;
+    }
+  }
+}

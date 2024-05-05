@@ -4,8 +4,15 @@ import styles from "./Login.module.scss";
 import TextField from "@Components/TextField";
 import Button from "@Components/Button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push("/homepage");
+  };
+
   const renderCreateAccount = () => {
     return (
       <div className={styles.createAccountContainer}>
@@ -42,7 +49,8 @@ export default function Login() {
           <Button
             color="primary"
             text={"Login"}
-            onButtonClick={() => console.log("first")}
+            type={"button"}
+            onButtonClick={() => handleLogin()}
           />
         </form>
       </div>
