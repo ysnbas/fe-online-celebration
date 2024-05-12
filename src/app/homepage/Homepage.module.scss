@@ -7,6 +7,53 @@
     }
     .generated {
       margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      .icons {
+        display: flex;
+        gap: 10px;
+        svg{
+          cursor: pointer;
+          transition: all 0.2s;
+          &:hover {
+            transform: scale(1.2);
+          }
+        
+        }
+      }
+    }
+    .allGenerated {
+      margin-top: 20px;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      .tab {
+        margin: 0 10px;
+        transition: all 0.2s;
+        font-weight: bold;
+        cursor: pointer;
+        &.active {
+          color: #000;
+          background: #00000042;
+          padding: 0 15px;
+          border-radius: 6px;
+        }
+      }
+    }
+    .animation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      span {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: large;
+        font-weight: bold;
+      }
     }
   }
 }
