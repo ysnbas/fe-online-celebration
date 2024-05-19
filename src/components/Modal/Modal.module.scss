@@ -1,0 +1,50 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000a8;
+  z-index: 999;
+}
+
+.modal {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 640px;
+  max-width: 640px;
+  text-align: center;
+}
+.modalWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+.closeBTNBox {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  .closeButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+  }
+}
+
+.modalTitle {
+  color: black;
+  margin-bottom: 20px;
+}
+.modalDescription {
+  color: black;
+  margin-bottom: 66px;
+}

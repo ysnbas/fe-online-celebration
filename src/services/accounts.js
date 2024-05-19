@@ -7,9 +7,12 @@ export const postLogin = async (params) => {
         "Content-Type": "application/json",
       },
     });
+
     if (!response.ok) {
-      throw new Error("API yanıtı başarısız");
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Something went wrong");
     }
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -26,9 +29,12 @@ export const postRegister = async (params) => {
         "Content-Type": "application/json",
       },
     });
+
     if (!response.ok) {
-      throw new Error("API yanıtı başarısız");
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Something went wrong");
     }
+
     const data = await response.json();
     return data;
   } catch (error) {

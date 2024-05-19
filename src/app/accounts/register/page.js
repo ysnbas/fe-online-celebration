@@ -35,7 +35,7 @@ export default function Register() {
     postRegister(e)
       .then((res) => {
         if (res?.success) {
-          Cookies.set("token", res.token);
+          Cookies.set("accessToken", res.token);
         }
       })
       .catch((error) => {

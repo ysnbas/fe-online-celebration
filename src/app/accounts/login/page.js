@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import TextField from "@Components/TextField";
 import Button from "@Components/Button";
@@ -10,9 +10,13 @@ import { useFormik, FormikProvider } from "formik";
 import * as Yup from "yup";
 import { postLogin } from "services/accounts";
 import Cookies from "js-cookie";
+import Modal from "@Components/Modal";
 
 export default function Login() {
   const router = useRouter();
+
+  const [visible, setVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -32,14 +36,34 @@ export default function Login() {
     postLogin(values)
       .then((res) => {
         if (res?.success) {
-          console.log("User logged in successfully");
-          Cookies.set("token", res.token);
+          Cookies.set("accessToken", res.token);
           router.push("/homepage");
         }
       })
       .catch((error) => {
-        console.error(error);
+        setErrorMessage(error.message);
+        setVisible(true);
       });
+  };
+
+  const handleModal = () => {
+    const modalContent = {
+      title: "Error",
+      description: errorMessage,
+      buttons: [
+        {
+          text: "Close",
+          onClick: () => setVisible(false),
+        },
+      ],
+    };
+    return (
+      <Modal
+        onClose={() => setVisible(false)}
+        visible={visible}
+        content={modalContent}
+      />
+    );
   };
 
   const renderCreateAccount = () => {
@@ -93,5 +117,9 @@ export default function Login() {
     );
   };
 
-  return <div>{renderUserForm()}</div>;
+  return (
+    <div>
+      {renderUserForm()} {handleModal()}
+    </div>
+  );
 }

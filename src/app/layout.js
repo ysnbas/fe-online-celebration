@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={inter.className}>
       <body className="container">
         <main className="content">{children}</main>
-        <div id="modal-root"></div>
+        <div id="modal-root" />
       </body>
     </html>
   );
