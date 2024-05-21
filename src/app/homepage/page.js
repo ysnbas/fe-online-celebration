@@ -1,23 +1,29 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MonoLayout from "@Layouts/MonoLayout";
 import styles from "./Homepage.module.scss";
 import TextField from "@Components/TextField";
 import Button from "@Components/Button";
-import ImageCard from "@Modules/ImageCard";
+// import ImageCard from "@Modules/ImageCard";
 import { postGeneratedData } from "services/openai";
 import Image from "next/image";
 import cx from "classnames";
 import { TABS } from "@Constants/tabs";
-import { GENERATED_IMAGE } from "@Constants/generatedImages";
+// import { GENERATED_IMAGE } from "@Constants/generatedImages";
 import Loading from "@Components/Loading";
 import Icon from "@Components/Icon";
+import { useSelector } from "react-redux";
+import Prompt from "@Components/Prompt";
 
 export default function Homepage() {
   const [generatedImage, setGeneratedImage] = useState("");
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
+  const [giftName, setGiftName] = useState("");
+  const [text, setText] = useState("");
   const [activeTab, setActiveTab] = useState("All");
+
+  const userData = useSelector((state) => state.user.userData);
 
   const handleClick = (item) => {
     console.log(item);
@@ -26,16 +32,18 @@ export default function Homepage() {
   const handleCreateImage = () => {
     setLoading(true);
     setGeneratedImage("");
+    const changeNamePrompt = prompt.replace("Jane", giftName);
     if (prompt) {
       postGeneratedData({
-        prompt: prompt,
+        prompt: changeNamePrompt,
+        user_id: userData?._id,
       })
         .then((res) => {
           if (res?.success) {
-            setGeneratedImage(res.data);
             setTimeout(() => {
+              setGeneratedImage(res.data);
               setLoading(false);
-            }, 4000);
+            }, 2000);
           }
         })
         .catch((error) => {
@@ -45,7 +53,7 @@ export default function Homepage() {
   };
 
   const handleTextChange = (e) => {
-    setPrompt(e.target.value);
+    setGiftName(e.target.value);
   };
 
   return (
@@ -53,20 +61,28 @@ export default function Homepage() {
       <MonoLayout>
         <div className={styles.createAIForm}>
           <form>
-            <TextField
-              title={"Create AI Birthday Cake"}
-              placeholder={"Text"}
-              onTextFieldChange={handleTextChange}
-              description={
-                "Generate an image using Generative AI by describing what you want to see, all images are published publicly by default."
-              }
-            />
+            <div className={styles.nameInput}>
+              <textarea
+                className={styles.textarea}
+                value={prompt}
+                placeholder="Create AI Birthday Cake"
+                disabled
+              />
+              <TextField
+                placeholder={"Name"}
+                onTextFieldChange={handleTextChange}
+              />
+            </div>
+            <span className={styles.description}>
+              Enter a name of your choice instead of &apos;Jane&apos; in the
+              text.
+            </span>
             <Button
               text={"Create"}
               color={"primary"}
               onButtonClick={() => handleCreateImage()}
               type={"button"}
-              disabled={!prompt || loading}
+              disabled={!(prompt && giftName) || loading}
             />
           </form>
           {loading && (
@@ -77,7 +93,6 @@ export default function Homepage() {
           {generatedImage && (
             <div className={styles.generated}>
               <div className={styles.icons}>
-                <Icon name="download" color={"black"} size={48} />
                 <Icon name="share" color={"black"} size={48} />
               </div>
               <Image
@@ -102,9 +117,10 @@ export default function Homepage() {
               </div>
             ))}
           </div>
-          <div className={styles.allGenerated}>
+          {/* <div className={styles.allGenerated}>
             <ImageCard data={GENERATED_IMAGE} onClick={handleClick} />
-          </div>
+          </div> */}
+          <Prompt category={activeTab} setPrompt={setPrompt} />
         </div>
       </MonoLayout>
     </div>

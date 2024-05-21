@@ -1,0 +1,35 @@
+.dropdown_box {
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  width: 14%;
+  color: black;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        background-color: #f9f9f9;
+      }
+    }
+  }
+  .itemStyle{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  a{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}

@@ -1,6 +1,32 @@
 .container {
   display: flex;
   justify-content: center;
+  .textarea {
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.68);
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    resize: none;
+  }
+  .nameInput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+  .description {
+    margin-top: 20px;
+    color: #ff7600;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+  }
   .createAIForm {
     button {
       margin-top: 20px;
@@ -11,16 +37,16 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;
+      gap: 20px;
       .icons {
         display: flex;
         gap: 10px;
-        svg{
+        svg {
           cursor: pointer;
           transition: all 0.2s;
           &:hover {
             transform: scale(1.2);
           }
-        
         }
       }
     }
@@ -31,6 +57,7 @@
       display: flex;
       justify-content: center;
       margin-top: 20px;
+      margin-bottom: 20px;
       .tab {
         margin: 0 10px;
         transition: all 0.2s;

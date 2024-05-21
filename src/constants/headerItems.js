@@ -1,14 +1,24 @@
 export const HEADER_ITEMS = [
   {
-    title: "Generated",
-    path: "/my-generated",
-  },
-  {
+    iconName: "user",
     title: "Profile",
-    path: "/homepage",
-  },
-  {
-    title: "Logout",
-    path: "/logout",
+    data: [
+      {
+        icon: "user",
+        title: "Profile",
+        path: "/profile/my-profile",
+      },
+      {
+        icon: "generated",
+        title: "Generated",
+        path: "/profile/generated",
+      },
+      {
+        icon: "logout",
+        title: "Logout",
+        path: "/logout",
+        logout: true,
+      },
+    ],
   },
 ];

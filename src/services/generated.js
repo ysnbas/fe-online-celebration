@@ -1,10 +1,9 @@
-export const postGeneratedData = async (params) => {
+export const getGeneratedData = async () => {
   try {
     const response = await fetch(
-      `${process.env.BASE_URL}/openai/generate_image/`,
+      `${process.env.BASE_URL}/generated/generated_data`,
       {
-        method: "POST",
-        body: JSON.stringify(params),
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },

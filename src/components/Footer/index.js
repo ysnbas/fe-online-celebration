@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer>
       <div className={styles.footer}>
-        <span>Copyright © Online Kutlama {date}</span>
+        <span>Copyright © Online Celebration {date}</span>
       </div>
     </footer>
   );

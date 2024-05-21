@@ -8,7 +8,7 @@
       "@Constants/*": ["constants/*"],
       "@Utils/*": ["utils/*"],
       "@Public/*": ["public/*"],
-      "@Redux/*": ["redux/*"],
+      "@Lib/*": ["lib/*"],
       "@Auth/*": ["auth/*"],
       "@Dashboard/*": ["dashboard/*"],
       "@Layouts/*": ["layouts/*"],
