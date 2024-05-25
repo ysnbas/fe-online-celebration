@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Prompt.module.scss";
 import { getPrompts } from "services/prompt";
 
 export default function Prompt({ category, setPrompt }) {
   const [data, setData] = useState([]);
+  const prevCategoryRef = useRef();
 
   const lowerCaseCategory = category?.toLowerCase();
 
   useEffect(() => {
+    if (prevCategoryRef.current === lowerCaseCategory) return;
     getPrompts({ name: lowerCaseCategory })
       .then((res) => {
         if (res.success) {
@@ -17,6 +19,7 @@ export default function Prompt({ category, setPrompt }) {
       .catch((error) => {
         console.error(error);
       });
+    prevCategoryRef.current = lowerCaseCategory;
   }, [lowerCaseCategory]);
 
   return (

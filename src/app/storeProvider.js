@@ -8,6 +8,7 @@ import { setUser } from "@Lib/features/user/userSlice";
 export default function StoreProvider({ children }) {
   const storeRef = useRef(makeStore);
   const [isUserDataLoaded, setIsUserDataLoaded] = useState(false);
+
   useEffect(() => {
     getUserData();
   }, []);
