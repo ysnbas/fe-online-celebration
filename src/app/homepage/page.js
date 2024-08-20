@@ -15,6 +15,7 @@ import Icon from "@Components/Icon";
 import { useSelector } from "react-redux";
 import Prompt from "@Components/Prompt";
 import Tooltip from "@Components/Tooltip";
+import Modal from "@Components/Modal";
 // import { postGeneratedVideo } from "services/runwayml";
 
 export default function Homepage() {
@@ -23,6 +24,8 @@ export default function Homepage() {
   const [loading, setLoading] = useState(false);
   const [giftName, setGiftName] = useState("");
   const [activeTab, setActiveTab] = useState("All");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [visible, setVisible] = useState(true);
 
   const userData = useSelector((state) => state.user.userData);
 
@@ -48,17 +51,28 @@ export default function Homepage() {
           }
         })
         .catch((error) => {
-          console.error(error);
+          setErrorMessage(error?.error || "Something went wrong");
+          setVisible(true);
         });
     }
   };
 
-  useEffect(() => {
-    console.log("tekrar");
-  }, []);
-
   const handleTextChange = (e) => {
     setGiftName(e.target.value);
+  };
+
+  const handleModal = () => {
+    const modalContent = {
+      title: "Error",
+      description: errorMessage,
+    };
+    return (
+      <Modal
+        content={modalContent}
+        onClose={() => setVisible(false)}
+        visible={visible}
+      />
+    );
   };
 
   // //https://th.bing.com/th/id/OIG3.YWl941mFPbJp8OCZ5UsM?pid=ImgGn
@@ -84,7 +98,7 @@ export default function Homepage() {
   // }, [activeTab]);
 
   return (
-    <div className={styles.container} fallback={true}>
+    <div className={styles.container}>
       <MonoLayout>
         <div className={styles.createAIForm}>
           <form>
@@ -160,6 +174,7 @@ export default function Homepage() {
           </div>
         </div>
       </MonoLayout>
+      {errorMessage && handleModal()}
     </div>
   );
 }

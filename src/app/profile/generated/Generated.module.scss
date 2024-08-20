@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .generatedImage {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    img {
+      margin: auto;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .expired {
+      filter: grayscale(100%);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Register.module.scss";
 import TextField from "@Components/TextField";
 import Button from "@Components/Button";
@@ -10,7 +10,14 @@ import * as Yup from "yup";
 import { postRegister } from "services/accounts";
 import Cookies from "js-cookie";
 
+import { useRouter } from "next/navigation";
+import Modal from "@Components/Modal";
+
 export default function Register() {
+  const router = useRouter();
+  const [visible, setVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const formik = useFormik({
     initialValues: {
       full_name: "",
@@ -31,15 +38,37 @@ export default function Register() {
     },
   });
 
+  const handleModal = () => {
+    const modalContent = {
+      title: "Error",
+      description: errorMessage,
+      buttons: [
+        {
+          text: "Close",
+          onClick: () => setVisible(false),
+        },
+      ],
+    };
+    return (
+      <Modal
+        onClose={() => setVisible(false)}
+        visible={visible}
+        content={modalContent}
+      />
+    );
+  };
+
   const handleFormSubmit = (e) => {
     postRegister(e)
       .then((res) => {
         if (res?.success) {
           Cookies.set("accessToken", res.token);
+          router.push("/homepage");
         }
       })
       .catch((error) => {
-        console.error(error);
+        setErrorMessage(error.message || error.error);
+        setVisible(true);
       });
   };
 
@@ -121,5 +150,9 @@ export default function Register() {
     );
   };
 
-  return <div>{renderUserForm()}</div>;
+  return (
+    <div>
+      {renderUserForm()} {handleModal()}
+    </div>
+  );
 }
